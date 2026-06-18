@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+    <style>
+      #my-circle{
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: #fd4;
+        display: none;
+        position: absolute;
+      }
+    </style>
+</head>
+<body id = "body" style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <center>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+   <div>
+     <center>
+       <div id="my-circle"></div>
+     </center>
+   </div>
+   </center>
+</body>
+<script>
+  
+  //++++++++++++++++++++++++++++
+  
+  // Events
+  
+  // bad approach
+  
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+    
+    // best approach
+    
+    /*
+    document.getElementById("owl").addEventListener("click", function(){
+      alert("owl clicked")
+    },false)
+    */
+    // whqt is the purpose of third parameter 'false'
+    // false means Event Bubbling: executing from target element up to the parents
+
+
+     // attachEvent()
+    // jQuery - on
+
+
+
+
+  // Task
+  
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+
+
+  // Bubbling if false and Capturing if true
+  
+  
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()
+    // }, false)
+    
+    
+    
+    
+    
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+   
+   // Mini Project 
+   
+   // image remover :
+
+/* 
+    
+    document.querySelector('#images').addEventListener('click', function(e){
+        // alert(e)
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+    
+        
+    })
+
+*/
+    
+    //removeIt.parentNode.removeChild(removeIt) // also use this
+  
+  // Task
+  
+  // wherever use4 clicked on a body it shows a circle on that location
+  
+  
+  document.getElementById("body").addEventListener("click", function DotShower(e){
+    // alert("body clicked")
+    // alert(e.clientX)
+    // alert(e.clientY)
+    let box = document.getElementById("my-circle")
+    let x = e.clientX
+    let y = e.clientY
+    
+    box.style.left = x + "px"
+    box.style.top = y + "px"
+    box.style.display = "block"
+  })
+    
+</script>
+</html>
