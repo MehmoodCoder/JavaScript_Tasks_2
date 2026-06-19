@@ -1,0 +1,52 @@
+<!-- 
+TASK: Create a dynamic Card using API data.
+
+Create a container div in HTML to hold the image.
+Fetch the user data from the GitHub API.
+Extract the user's profile image and display it inside the div.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api calling</title>
+    <style>
+      body{
+        background-color: #212121;
+        color: white;
+      }
+      #card{
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+      }
+    </style>
+</head>
+<body>
+  <div id="card">
+    
+  </div>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/MehmoodCoder'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl)
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            console.log(data.avatar_url);
+            let image = data.avatar_url
+            let img = document.createElement('img')
+            
+            img.setAttribute('src',image)
+            img.setAttribute('alt','repo image')
+            img.setAttribute('width', '150')
+            img.setAttribute('height', '150')
+            let card = document.getElementById('card')
+            card.appendChild(img)
+        }    
+    }
+    xhr.send();
+</script>
+</html>
